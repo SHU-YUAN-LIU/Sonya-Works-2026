@@ -1,28 +1,20 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import DashboardView from '@/views/dashboardView.vue'
+
+export const Layout = () => import('@/layout/MainLayout.vue') //主要佈局樣式
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: '/',
-      name: 'dashboard',
-      component: DashboardView
-    },
-    {
-      path: '/works',
-      name: 'works',
-      component: () => import('../views/worksView.vue')
-    },
-    {
-      path: '/form',
-      name: 'form',
-      component: () => import('../views/formView.vue')
-    },
-    {
-      path: '/profile',
-      name: 'profile',
-      component: () => import('../views/profileView.vue')
+      component: Layout,
+      children: [
+        {
+          path: '',
+          name: 'dashboard',
+          component: () => import('../views/dashboard/dashboardView.vue')
+        },
+      ]
     }
   ]
 })

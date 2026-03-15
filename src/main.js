@@ -1,13 +1,11 @@
-//引入sass
-import './assets/scss/style.scss'
-
+import './styles/style.scss' //引入sass
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import ElementPlus from 'element-plus' //引入element-plus
 import 'element-plus/dist/index.css' //引入element-plus
 import * as ElementPlusIconsVue from '@element-plus/icons-vue' //引入element-plus icons
-//引入饅頭字體
-import '@/assets/Mantou_font/_Mantou_font.scss'
+import '@/assets/Mantou_font/_Mantou_font.scss'//引入饅頭字體
+
 
 import App from './App.vue'
 import router from './router'

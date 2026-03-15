@@ -1,0 +1,1 @@
+export { default as WorksCard } from './worksCard.vue'
