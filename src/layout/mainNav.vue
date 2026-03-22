@@ -1,17 +1,17 @@
 <template>
   <div class="nav-bar">
     <RouterLink to="/" class="nav-front">
-      <span>Dashboard</span>
-    </RouterLink>
-    <div class="nav-end">
-      <div class="circle"></div>
+      <div class="circle">
+        <!-- <el-icon size="20"><ArrowRight /></el-icon> -->
+      </div>
       <span>Sonya</span>
-    </div>
+    </RouterLink>
   </div>
 </template>
 
 <script setup>
 import { RouterLink } from "vue-router";
+// import { ArrowRight } from "@element-plus/icons-vue";
 </script>
 
 <style scoped>
@@ -39,13 +39,8 @@ import { RouterLink } from "vue-router";
   .nav-front {
     display: flex;
     align-items: center;
-    gap: 40px;
-  }
-
-  .nav-end {
-    display: flex;
-    align-items: center;
     gap: 10px;
+    text-decoration: none;
 
     .circle {
       width: 40px;

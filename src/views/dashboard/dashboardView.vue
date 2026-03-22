@@ -6,6 +6,7 @@
         :key="index"
         :title="item.title"
         :imgUrl="item.imgUrl"
+        :linkUrl="item.linkUrl"
       />
     </div>
   </div>
@@ -18,9 +19,11 @@ import { worksData } from "@/data/testData";
 <style scoped lang="scss">
 .chart-container {
   min-height: 100%;
+  display: grid;
+  align-items: center;
+  justify-items: center;
   background-image: url("@/assets/icons/square.svg");
   background-repeat: repeat;
-  padding: 1rem;
 }
 .card-wrapper {
   margin: 0 auto;
@@ -30,7 +33,7 @@ import { worksData } from "@/data/testData";
   justify-content: center;
   justify-items: center;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1.5rem;
+  gap: 1rem;
   padding: 1rem 0;
 }
 </style>

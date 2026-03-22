@@ -1,5 +1,9 @@
 <template>
-  <div class="works-card">
+  <div
+    class="works-card"
+    :class="{ 'is-link': linkUrl }"
+    @click="handleOpenUrl"
+  >
     <div class="card-header">
       <div class="controls">
         <span class="dot red"></span>
@@ -12,7 +16,8 @@
       <div class="image-container">
         <slot>
           <div class="placeholder">
-            <img :src="imgUrl" alt="" />
+            <img v-if="imgUrl" :src="imgUrl" alt="" />
+            <span v-else> No Image </span>
           </div>
         </slot>
       </div>
@@ -30,40 +35,68 @@ const props = defineProps({
     type: String,
     default: "",
   },
+  linkUrl: {
+    type: String,
+    default: "",
+  },
 });
+
+const handleOpenUrl = () => {
+  if (props.linkUrl) {
+    window.open(props.linkUrl, "_blank");
+  }
+};
 </script>
 
 <style scoped lang="scss">
 .works-card {
   background: #ffffff;
-  border: 1px solid #a9b7c6;
+  border: 1px solid #e0e0e0;
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-  font-family: "Inter", sans-serif;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  font-family:
+    "Inter",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    sans-serif;
   width: 100%;
-  max-width: 400px; /* Optional: limit oversized cards on large screens */
+  max-width: 400px;
   margin: 0 auto;
-  height: 320px; /* Fixed height for the entire card */
+  height: fit-content;
   display: flex;
   flex-direction: column;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  position: relative;
+  &.is-link {
+    cursor: pointer;
+    &:hover {
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+      .action-btn {
+        background: #3b82f6;
+        color: white;
+      }
+    }
+  }
 
   .card-header {
-    background: #f3f3f3;
-    padding: 10px 15px;
+    background: #f8fafc;
+    padding: 12px 16px;
     display: flex;
     align-items: center;
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid #f1f5f9;
     flex-shrink: 0;
 
     .controls {
       display: flex;
       gap: 6px;
-      margin-right: 20px;
+      margin-right: 16px;
 
       .dot {
-        width: 12px;
-        height: 12px;
+        width: 10px;
+        height: 10px;
         border-radius: 50%;
 
         &.red {
@@ -79,9 +112,10 @@ const props = defineProps({
     }
 
     .title {
-      font-size: 14px;
-      color: #666;
-      font-family: monospace;
+      font-size: 13px;
+      font-weight: 600;
+      color: #64748b;
+      font-family: "Fira Code", monospace;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -102,30 +136,28 @@ const props = defineProps({
       align-items: center;
       justify-content: center;
       overflow: hidden;
-
+      border: 1px solid rgb(241, 241, 241);
+      border-radius: 8px;
+      // box-shadow: 0 0 8px 8px rgba(211, 211, 211, 0.2);
       .placeholder {
         width: 100%;
-        height: 100%;
-        border: 2px dashed #eee;
+        min-height: 200px;
+        background: #f1f5f9;
+
         border-radius: 8px;
         display: flex;
         align-items: center;
         justify-content: center;
-        color: #ccc;
-        font-size: 1.2rem;
+        color: #94aeac;
+        font-weight: 500;
+        overflow: hidden;
 
         img {
-          max-width: 100%;
-          max-height: 100%;
-          object-fit: contain;
+          width: 100%;
+          height: auto;
+          object-fit: cover;
+          display: block;
         }
-      }
-
-      :deep(img) {
-        max-width: 100%;
-        max-height: 100%;
-        object-fit: contain;
-        display: block;
       }
     }
   }
