@@ -6,7 +6,7 @@ import vueDevTools from 'vite-plugin-vue-devtools'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: '/Sonya2/',
+  base: '/Sonya-Works-2026/',
   plugins: [vue(), vueDevTools()],
   resolve: {
     alias: {
