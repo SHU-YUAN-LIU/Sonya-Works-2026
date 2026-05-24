@@ -24,6 +24,6 @@ git commit -m 'deploy'
 # git push -f git@github.com:<USERNAME>/<USERNAME>.github.io.git main
 
 # if you are deploying to https://<USERNAME>.github.io/<REPO>
-git push -f https://github.com/SHU-YUAN-LIU/Sonya2.git main:gh-pages
+git push -f https://github.com/SHU-YUAN-LIU/Sonya-Works-2026.git main:gh-pages
 
 cd -
