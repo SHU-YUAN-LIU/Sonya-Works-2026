@@ -4,28 +4,55 @@
     :class="{ 'is-link': linkUrl }"
     @click="handleOpenUrl"
   >
-    <div class="card-header">
+    <!-- MacOS terminal top bar -->
+    <div class="card-header font-mono">
       <div class="controls">
         <span class="dot red"></span>
         <span class="dot yellow"></span>
         <span class="dot green"></span>
       </div>
-      <div class="title">{{ title }}</div>
+      <div class="title-bar">&gt; {{ formattedFileName }}</div>
     </div>
+
+    <!-- Content container -->
     <div class="card-body">
-      <div class="image-container">
-        <slot>
+      <slot>
+        <div class="image-container">
           <div class="placeholder">
-            <img v-if="imgUrl" :src="imgUrl" alt="" />
-            <span v-else> No Image </span>
+            <img v-if="imgUrl" :src="imgUrl" alt="" class="card-image" />
+            <div v-else class="no-img-fallback">
+              <span class="icon">&lt;/&gt;</span>
+              <span>No Image Available</span>
+            </div>
           </div>
-        </slot>
+        </div>
+      </slot>
+
+      <!-- Interactive developer code details block -->
+      <div class="card-details font-mono">
+        <div class="code-line">
+          <span class="keyword">const</span> name =
+          <span class="string">"{{ title }}"</span>;
+        </div>
+        <div class="code-line">
+          <span class="keyword">const</span> status =
+          <span class="string">"online"</span>;
+        </div>
+
+        <!-- Hover action hint -->
+        <div class="action-hint" v-if="linkUrl">
+          <span class="prompt-sym">&gt;</span>
+          <span class="action-text">visit_app()</span>
+          <span class="arrow font-sans">→</span>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
+import { computed } from "vue";
+
 const props = defineProps({
   title: {
     type: String,
@@ -41,6 +68,20 @@ const props = defineProps({
   },
 });
 
+// Dynamic terminal file name formatting
+const formattedFileName = computed(() => {
+  const titleMap = {
+    節能系統: "energy-saving.vue",
+    能源系統: "mbms-energy.tsx",
+    "個人專題(緯育)": "personal-wolfer.html",
+    "團體專題(緯育)": "group-eat-party.conf",
+  };
+  return (
+    titleMap[props.title] ||
+    `${props.title.toLowerCase().replace(/[^a-z0-9]/g, "-") || "project"}.tsx`
+  );
+});
+
 const handleOpenUrl = () => {
   if (props.linkUrl) {
     window.open(props.linkUrl, "_blank");
@@ -50,54 +91,73 @@ const handleOpenUrl = () => {
 
 <style scoped lang="scss">
 .works-card {
-  background: #ffffff;
-  border: 1px solid #e0e0e0;
-  border-radius: 12px;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
   overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  font-family:
-    "Inter",
-    -apple-system,
-    BlinkMacSystemFont,
-    "Segoe UI",
-    Roboto,
-    sans-serif;
+  box-shadow: var(--card-shadow);
   width: 100%;
-  max-width: 400px;
+  max-width: 380px;
   margin: 0 auto;
-  height: fit-content;
+  height: 100%;
   display: flex;
   flex-direction: column;
-  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   position: relative;
+  transition:
+    transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.4s ease;
+
   &.is-link {
     cursor: pointer;
+
     &:hover {
-      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
-      .action-btn {
-        background: #3b82f6;
-        color: white;
+      transform: translateY(-6px);
+      border-color: var(--primary);
+      box-shadow: var(--card-hover-shadow);
+
+      .card-header {
+        background: var(--muted);
+        border-bottom-color: var(--primary);
+      }
+
+      .card-image {
+        transform: scale(1.05);
+      }
+
+      .action-hint {
+        color: var(--primary);
+        .action-text {
+          text-decoration: underline;
+        }
+        .arrow {
+          transform: translateX(4px);
+        }
       }
     }
   }
 
   .card-header {
-    background: #f8fafc;
-    padding: 12px 16px;
+    background: var(--muted);
+    padding: 10px 14px;
     display: flex;
     align-items: center;
-    border-bottom: 1px solid #f1f5f9;
+    border-bottom: 1px solid var(--border);
     flex-shrink: 0;
+    transition:
+      background-color 0.3s ease,
+      border-color 0.3s ease;
 
     .controls {
       display: flex;
       gap: 6px;
-      margin-right: 16px;
+      margin-right: 14px;
 
       .dot {
         width: 10px;
         height: 10px;
         border-radius: 50%;
+        transition: transform 0.2s ease;
 
         &.red {
           background: #ff5f56;
@@ -111,52 +171,114 @@ const handleOpenUrl = () => {
       }
     }
 
-    .title {
-      font-size: 13px;
+    &:hover .controls .dot {
+      transform: scale(1.1);
+    }
+
+    .title-bar {
+      font-size: 12px;
       font-weight: 600;
-      color: #64748b;
-      font-family: "Fira Code", monospace;
+      color: var(--muted-foreground);
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
+      letter-spacing: 0.5px;
     }
   }
 
   .card-body {
-    padding: 20px;
-    background: #ffffff;
+    padding: 16px;
+    background: transparent;
     flex: 1;
     display: flex;
     flex-direction: column;
+    gap: 14px;
     overflow: hidden;
 
     .image-container {
-      flex: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      width: 100%;
+      height: 200px;
       overflow: hidden;
-      border: 1px solid rgb(241, 241, 241);
-      border-radius: 8px;
-      // box-shadow: 0 0 8px 8px rgba(211, 211, 211, 0.2);
+      border: 1px solid var(--border);
+      border-radius: calc(var(--radius) - 2px);
+      position: relative;
+      background: var(--code-bg);
+
       .placeholder {
         width: 100%;
-        min-height: 200px;
-        background: #f1f5f9;
-
-        border-radius: 8px;
+        height: 100%;
         display: flex;
         align-items: center;
         justify-content: center;
-        color: #94aeac;
-        font-weight: 500;
         overflow: hidden;
 
-        img {
+        .card-image {
           width: 100%;
-          height: auto;
+          height: 100%;
           object-fit: cover;
           display: block;
+          transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .no-img-fallback {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 8px;
+          color: var(--muted-foreground);
+          font-size: 0.875rem;
+
+          .icon {
+            font-size: 2rem;
+            color: var(--primary);
+            opacity: 0.7;
+          }
+        }
+      }
+    }
+
+    .card-details {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      font-size: 0.8rem;
+      color: var(--foreground);
+      border-top: 1px dashed var(--border);
+      padding-top: 12px;
+      margin-top: auto;
+
+      .code-line {
+        line-height: 1.5;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+
+        .keyword {
+          color: var(--primary);
+          font-weight: 600;
+        }
+
+        .string {
+          color: var(--accent);
+        }
+      }
+
+      .action-hint {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        margin-top: 6px;
+        color: var(--muted-foreground);
+        font-weight: 600;
+        font-size: 0.825rem;
+        transition: color 0.3s ease;
+
+        .prompt-sym {
+          color: var(--primary);
+        }
+
+        .arrow {
+          transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
       }
     }
