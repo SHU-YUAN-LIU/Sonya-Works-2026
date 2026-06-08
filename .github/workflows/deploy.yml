@@ -1,0 +1,68 @@
+# 工作流名稱：部署至 GitHub Pages
+name: Deploy to GitHub Pages
+
+# 觸發條件
+on:
+  # 當 main 分支收到 push 時觸發
+  push:
+    branches:
+      - main
+
+  # 允許在 GitHub 網頁上手動觸發執行此工作流
+  workflow_dispatch:
+
+# 設定 GitHub Actions 的 GITHUB_TOKEN 權限，以允許部署到 GitHub Pages
+permissions:
+  contents: read      # 讀取儲存庫內容的權限
+  pages: write         # 寫入 GitHub Pages 的權限
+  id-token: write      # 用於安全驗證與部署的 ID 憑證權限
+
+# 併發排程設定：同時間只允許一個部署流程進行，避免多個部署互相衝突
+concurrency:
+  group: 'pages'
+  cancel-in-progress: false
+
+jobs:
+  # 部署任務
+  deploy:
+    # 指定部署的環境與生成的網頁網址
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    # 執行環境使用最新版 Ubuntu
+    runs-on: ubuntu-latest
+    steps:
+      # 步驟 1: 下載/檢出儲存庫專案程式碼
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # 步驟 2: 安裝與設定 Node.js 環境
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'  # 快取 npm 套件，加快未來部署速度
+
+      # 步驟 3: 安裝專案相依套件 (乾淨安裝)
+      - name: Install dependencies
+        run: npm ci
+
+      # 步驟 4: 編譯/打包專案
+      - name: Build
+        run: npm run build
+
+      # 步驟 5: 初始化與設定 GitHub Pages
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      # 步驟 6: 上傳編譯好的 dist 資料夾為 Pages 產物
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: './dist' # 指定編譯後靜態網頁所在的路徑
+
+      # 步驟 7: 部署產物到 GitHub Pages 伺服器
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
