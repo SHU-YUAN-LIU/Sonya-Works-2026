@@ -21,9 +21,9 @@
           >
             <span class="keyword">const</span> developer = {
             <div class="pl-6">
-              name: <span class="string">"劉書菀"</span>,<br />
-              englishName: <span class="string">"SHU-YUAN-LIU"</span>,<br />
-              role: <span class="string">"Frontend Engineer"</span>,<br />
+              Name: <span class="string">"劉書菀"</span>,<br />
+              EnglishName: <span class="string">"SHU-YUAN-LIU"</span>,<br />
+              Role: <span class="string">"Frontend Engineer"</span>,<br />
             </div>
             };
           </div>
@@ -37,16 +37,13 @@
           class="intro-text text-[var(--foreground)] leading-[1.8] text-justify space-y-3 font-sans text-[1rem] pt-4"
         >
           <p>
-            我是書菀，視覺設計是我過往擅長的工作內容。在多年的設計實務中，我深刻體會到好的設計需要強大的開發技術來完整呈現。
+           Hi ! 我是書菀，一名<strong>前端工程師</strong>
           </p>
           <p>
-            因為對前端網頁開發產生了濃厚的興趣，我下定決心跨域學習，並參加了專業的前端工程師養成課程進修。
+           主要使用<strong> Vue3 </strong>進行前端開發，曾參與企業節能管理系統建置，從前期的專案初始化與架構設計，到中後期的 <strong>API 整合</strong>、<strong>MQTT 即時數據監控</strong>，以及設備管理、權限控制等功能模組的開發與維護。
           </p>
           <p>
-            這段扎實的訓練讓我掌握了從網頁語意化排版到動態組件化開發的核心技能。憑藉我堅實的<strong>視覺設計背景</strong>與<strong>前端開發技術</strong>，我能夠在敏捷開發中擔任設計與工程之間的完美橋樑，創造出細緻流暢的互動體驗。
-          </p>
-          <p>
-            在未來的職業生涯中，我將持續精進前端與新技術，用代碼與美感為使用者帶來令人驚艷的產品。
+            結合過往的視覺設計背景，我能在開發中融入 UI/UX 思考，兼顧系統架構的擴充性與使用者體驗。期待持續深化技術，參與更多產品與系統的開發。
           </p>
         </div>
       </div>

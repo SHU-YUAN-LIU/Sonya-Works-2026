@@ -142,7 +142,7 @@ const menuItems = [
 
 @media (min-width: 1024px) {
   .aside-panel {
-    width: 400px;
+    width: 320px;
     height: 100vh;
     overflow-y: auto;
     position: sticky;

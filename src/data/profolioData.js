@@ -26,6 +26,10 @@ export const worksData = [
     linkUrl: "https://tibamef2e.com/chd104/g2/",
     imgUrl: youthWantToEatParty,
   },
+  {
+    title: "設計作品",
+    linkUrl: "https://www.behance.net/2bf44a20",
+    imgUrl: youthWantToEatParty,
+  },
 ];
 
-  

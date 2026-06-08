@@ -13,10 +13,10 @@
     </h1>
 
     <div
-      class="grid grid-cols-1 lg:grid-cols-2 gap-6 [animation:slideUp_0.8s_cubic-bezier(0.16,1,0.3,1)_0.1s_both]"
+      class="flex flex-col gap-6 [animation:slideUp_0.8s_cubic-bezier(0.16,1,0.3,1)_0.1s_both] w-full"
     >
       <!-- 左欄：教育背景 & 進修 -->
-      <WorksCard title="education">
+      <WorksCard title="education" class="w-full">
         <div class="exp-content w-full">
           <h2 class="section-title">🎓 教育背景 &amp; 進修</h2>
           <div class="timeline">
@@ -28,11 +28,6 @@
                   <h3 class="timeline-company">緯育 Tibame</h3>
                   <span class="timeline-role">前端工程師就業養成班</span>
                 </div>
-                <ul class="timeline-list">
-                  <li>全面深入學習網頁前端核心技術與現代化框架開發</li>
-                  <li>實作並掌握多個響應式系統與 Vue.js 交互式專案</li>
-                  <li>學習與後端 API 串接、Git 版本控制協同工作流程</li>
-                </ul>
               </div>
             </div>
 
@@ -46,11 +41,6 @@
                   <h3 class="timeline-company">國立臺灣藝術大學</h3>
                   <span class="timeline-role">視覺傳達設計學系（學士）</span>
                 </div>
-                <ul class="timeline-list">
-                  <li>系統化學習色彩學、版面編排、平面包裝與字體設計</li>
-                  <li>培養深厚的視覺感知、美學素養與設計策略思考能力</li>
-                  <li>畢業製作榮獲校內外設計競賽入圍肯定</li>
-                </ul>
               </div>
             </div>
           </div>
@@ -58,10 +48,90 @@
       </WorksCard>
 
       <!-- 右欄：工作經歷 -->
-      <WorksCard title="work-history">
+      <WorksCard title="work-history" class="w-full">
         <div class="exp-content w-full">
           <h2 class="section-title">💼 工作經歷</h2>
           <div class="timeline">
+            <div class="timeline-item timeline-item--active">
+              <div class="timeline-dot timeline-dot--active"></div>
+              <div class="timeline-content">
+                <span class="timeline-date timeline-date--active">2024/7 – 仍在職</span>
+                <div class="timeline-header flex flex-col items-start gap-1 mb-2">
+                  <div class="flex items-baseline gap-2">
+                    <h3 class="timeline-company">百慧科技股份有限公司</h3>
+                    <span class="timeline-role">軟體工程師</span>
+                  </div>
+                  <span class="text-[0.85rem] text-[var(--muted-foreground)]">電腦系統整合服務業 | 新北市三重區</span>
+                </div>
+                
+                <div class="mt-5 leading-[1.8]">
+                  <!-- 工作內容區塊 -->
+                  <div class="mb-8">
+                    <h4 class="text-[1.15rem] font-[800] text-[var(--primary)] tracking-wide mb-4 flex items-center gap-2">
+                      <span class="w-1.5 h-1.5 bg-[var(--primary)] rounded-full"></span>
+                      工作內容
+                    </h4>
+                    <ul class="timeline-list">
+                      <li>
+                        <strong class="text-[1rem] text-[var(--foreground)] whitespace-nowrap shrink-0">專案架構與前端建置：</strong>
+                        <span class="text-[0.95rem] text-[var(--muted-foreground)]">從零建構節能管理系統前端架構，採用 Vue 3 (Composition API) 與 Vite 為核心框架；導入 Pinia 進行全域狀態管理，並整合 Vue I18n 實現多國語系。</span>
+                      </li>
+                      <li>
+                        <strong class="text-[1rem] text-[var(--foreground)] whitespace-nowrap shrink-0">即時通訊與後端協作：</strong>
+                        <span class="text-[0.95rem] text-[var(--muted-foreground)]">封裝 MQTT (mqtt.js) 核心通訊模組，實現設備即時數據訂閱、發送與自動重連機制；基於 Axios 透過 Interceptors 統一處理 JWT 認證、分頁與 API 攔截。</span>
+                      </li>
+                      <li>
+                        <strong class="text-[1rem] text-[var(--foreground)] whitespace-nowrap shrink-0">數據視覺化與 UI 開發：</strong>
+                        <span class="text-[0.95rem] text-[var(--muted-foreground)]">以 Element Plus 為基礎，搭配 UnoCSS 與 SCSS 進行切版，並整合 ECharts 開發能源監控資料視覺化圖表。</span>
+                      </li>
+                      <li>
+                        <strong class="text-[1rem] text-[var(--foreground)] whitespace-nowrap shrink-0">共用模組與前端工程化：</strong>
+                        <span class="text-[0.95rem] text-[var(--muted-foreground)]">開發共用 Composables 與元件，封裝圖片壓縮與拖曳排序等功能模組，提升程式碼重用性並降低維護成本。</span>
+                      </li>
+                      <li>
+                        <strong class="text-[1rem] text-[var(--foreground)] whitespace-nowrap shrink-0">系統防呆與異常處理：</strong>
+                        <span class="text-[0.95rem] text-[var(--muted-foreground)]">實作前端驗證與錯誤處理機制 (JWT Auth)，透過 Axios Interceptors 與 Vue 全域錯誤處理統一攔截 API 與系統異常。</span>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <!-- 採用技術區塊 -->
+                  <div>
+                    <h4 class="text-[1.15rem] font-[800] text-[var(--primary)] tracking-wide mb-4 flex items-center gap-2">
+                      <span class="w-1.5 h-1.5 bg-[var(--primary)] rounded-full"></span>
+                      採用技術
+                    </h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-y-4 gap-x-6 pl-1">
+                      <div class="flex flex-col gap-0.5">
+                        <span class="text-[0.75rem] text-[var(--muted-foreground)] uppercase tracking-widest font-bold">核心框架</span>
+                        <span class="text-[0.95rem] font-bold text-[var(--foreground)]">Vue 3 (Composition API)、Vite、Vue Router</span>
+                      </div>
+                      <div class="flex flex-col gap-0.5">
+                        <span class="text-[0.75rem] text-[var(--muted-foreground)] uppercase tracking-widest font-bold">狀態管理</span>
+                        <span class="text-[0.95rem] font-bold text-[var(--foreground)]">Pinia、pinia-plugin-persistedstate</span>
+                      </div>
+                      <div class="flex flex-col gap-0.5">
+                        <span class="text-[0.75rem] text-[var(--muted-foreground)] uppercase tracking-widest font-bold">UI 與樣式</span>
+                        <span class="text-[0.95rem] font-bold text-[var(--foreground)]">Element Plus、UnoCSS、SCSS / Sass</span>
+                      </div>
+                      <div class="flex flex-col gap-0.5">
+                        <span class="text-[0.75rem] text-[var(--muted-foreground)] uppercase tracking-widest font-bold">資料通訊</span>
+                        <span class="text-[0.95rem] font-bold text-[var(--foreground)]">Axios (RESTful API)、MQTT (即時通訊)</span>
+                      </div>
+                      <div class="flex flex-col gap-0.5">
+                        <span class="text-[0.75rem] text-[var(--muted-foreground)] uppercase tracking-widest font-bold">資料視覺化</span>
+                        <span class="text-[0.95rem] font-bold text-[var(--foreground)]">ECharts</span>
+                      </div>
+                      <div class="flex flex-col gap-0.5">
+                        <span class="text-[0.75rem] text-[var(--muted-foreground)] uppercase tracking-widest font-bold">常用工具</span>
+                        <span class="text-[0.95rem] font-bold text-[var(--foreground)]">Vue I18n、VueUse、vuedraggable、jwt-decode</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
             <div class="timeline-item timeline-item--active">
               <div class="timeline-dot timeline-dot--active"></div>
               <div class="timeline-content">
@@ -135,13 +205,13 @@ import { WorksCard } from "@/components";
 }
 
 .section-title {
-  font-size: 1rem;
+  font-size: 1.1rem;
   font-weight: 700;
   color: var(--foreground);
-  padding-bottom: 10px;
+  padding-bottom: 12px;
   border-bottom: 1px dashed var(--border);
   font-family: system-ui, sans-serif;
-  margin-bottom: 16px;
+  margin-bottom: 24px;
 }
 
 /* ── 時間軸 ── */
@@ -156,7 +226,7 @@ import { WorksCard } from "@/components";
 
 .timeline-item {
   position: relative;
-  padding: 0 0 24px 20px;
+  padding: 0 0 32px 24px;
 
   &:last-child {
     padding-bottom: 0;
@@ -184,7 +254,7 @@ import { WorksCard } from "@/components";
 .timeline-content {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 10px;
 }
 
 .timeline-date {
@@ -193,6 +263,7 @@ import { WorksCard } from "@/components";
   color: #e05a36;
   font-family: ui-monospace, monospace;
   transition: all 0.3s ease;
+  margin-bottom: 4px;
 }
 
 .timeline-header {
@@ -200,11 +271,11 @@ import { WorksCard } from "@/components";
   align-items: baseline;
   gap: 8px;
   flex-wrap: wrap;
-  margin-bottom: 4px;
+  margin-bottom: 8px;
 }
 
 .timeline-company {
-  font-size: 1rem;
+  font-size: 1.05rem;
   font-weight: 700;
   color: var(--foreground);
   font-family: system-ui, sans-serif;
@@ -219,18 +290,23 @@ import { WorksCard } from "@/components";
 .timeline-list {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 12px;
   font-size: 1rem;
+  line-height: 1.8;
   color: var(--muted-foreground);
   padding: 0;
   margin: 0;
   list-style: none;
   font-family: system-ui, sans-serif;
 
+  li {
+    display: flex;
+  }
+
   li::before {
     content: "–";
     color: var(--primary);
-    margin-right: 6px;
+    margin-right: 8px;
     font-weight: 700;
   }
 }
@@ -247,8 +323,8 @@ import { WorksCard } from "@/components";
 
   /* 調整內距與整體舒適間距 */
   .card-body {
-    padding: 24px 28px !important;
-    gap: 20px !important;
+    padding: 32px 36px !important;
+    gap: 24px !important;
   }
 
   /* 隱藏原本 card-body 預設的 image container（因為學經歷不需要秀專案縮圖） */
