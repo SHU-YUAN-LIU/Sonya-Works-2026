@@ -2,6 +2,7 @@ import youthWantToEatParty from "@/assets/images/happyParty.jpg";
 import energySaving from "@/assets/images/energySaving.jpg";
 import MBMS from "@/assets/images/MBMS.jpg";
 import wolfer from "@/assets/images/wolfer.jpg";
+import design from "@/assets/images/design.jpg";
 
 
 //作品集連結
@@ -29,7 +30,7 @@ export const worksData = [
   {
     title: "設計作品",
     linkUrl: "https://www.behance.net/2bf44a20",
-    imgUrl: youthWantToEatParty,
+    imgUrl: design,
   },
 ];
 

@@ -15,31 +15,24 @@
     <div
       class="flex flex-col gap-6 [animation:slideUp_0.8s_cubic-bezier(0.16,1,0.3,1)_0.1s_both] w-full"
     >
-      <!-- 左欄：教育背景 & 進修 -->
+      <!-- 教育背景 & 進修 -->
       <WorksCard title="education" class="w-full">
         <div class="exp-content w-full">
           <h2 class="section-title">🎓 教育背景 &amp; 進修</h2>
           <div class="timeline">
-            <div class="timeline-item timeline-item--active">
+            <div
+              v-for="(edu, index) in educationData"
+              :key="index"
+              class="timeline-item timeline-item--active"
+            >
               <div class="timeline-dot timeline-dot--active"></div>
               <div class="timeline-content">
-                <span class="timeline-date timeline-date--active">2025</span>
+                <span class="timeline-date timeline-date--active">{{
+                  edu.date
+                }}</span>
                 <div class="timeline-header">
-                  <h3 class="timeline-company">緯育 Tibame</h3>
-                  <span class="timeline-role">前端工程師就業養成班</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="timeline-item timeline-item--active">
-              <div class="timeline-dot timeline-dot--active"></div>
-              <div class="timeline-content">
-                <span class="timeline-date timeline-date--active"
-                  >2014 – 2018</span
-                >
-                <div class="timeline-header">
-                  <h3 class="timeline-company">國立臺灣藝術大學</h3>
-                  <span class="timeline-role">視覺傳達設計學系（學士）</span>
+                  <h3 class="timeline-company">{{ edu.company }}</h3>
+                  <span class="timeline-role">{{ edu.role }}</span>
                 </div>
               </div>
             </div>
@@ -47,143 +40,65 @@
         </div>
       </WorksCard>
 
-      <!-- 右欄：工作經歷 -->
+      <!-- 工作經歷 -->
       <WorksCard title="work-history" class="w-full">
         <div class="exp-content w-full">
           <h2 class="section-title">💼 工作經歷</h2>
           <div class="timeline">
-            <div class="timeline-item timeline-item--active">
+            <div
+              v-for="(work, index) in workData"
+              :key="index"
+              class="timeline-item timeline-item--active"
+            >
               <div class="timeline-dot timeline-dot--active"></div>
               <div class="timeline-content">
-                <span class="timeline-date timeline-date--active">2024/7 – 仍在職</span>
-                <div class="timeline-header flex flex-col items-start gap-1 mb-2">
+                <span class="timeline-date timeline-date--active">
+                  {{ work.date }}
+                </span>
+                <div
+                  class="timeline-header flex flex-col items-start gap-1 mb-2"
+                >
                   <div class="flex items-baseline gap-2">
-                    <h3 class="timeline-company">百慧科技股份有限公司</h3>
-                    <span class="timeline-role">軟體工程師</span>
+                    <h3 class="timeline-company">{{ work.company }}</h3>
+                    <span class="timeline-role">{{ work.role }}</span>
                   </div>
-                  <span class="text-[0.85rem] text-[var(--muted-foreground)]">電腦系統整合服務業 | 新北市三重區</span>
+                  <span
+                    v-if="work.info"
+                    class="text-[0.85rem] text-[var(--muted-foreground)]"
+                  >
+                    {{ work.info }}
+                  </span>
                 </div>
-                
-                <div class="mt-5 leading-[1.8]">
+
+                <div
+                  v-if="work.hasDetails || work.list"
+                  class="mt-2 leading-[1.8]"
+                >
                   <!-- 工作內容區塊 -->
-                  <div class="mb-8">
-                    <h4 class="text-[1.15rem] font-[800] text-[var(--primary)] tracking-wide mb-4 flex items-center gap-2">
-                      <span class="w-1.5 h-1.5 bg-[var(--primary)] rounded-full"></span>
-                      工作內容
-                    </h4>
+                  <div v-if="work.jobContent" class="mb-8">
                     <ul class="timeline-list">
-                      <li>
-                        <strong class="text-[1rem] text-[var(--foreground)] whitespace-nowrap shrink-0">專案架構與前端建置：</strong>
-                        <span class="text-[0.95rem] text-[var(--muted-foreground)]">從零建構節能管理系統前端架構，採用 Vue 3 (Composition API) 與 Vite 為核心框架；導入 Pinia 進行全域狀態管理，並整合 Vue I18n 實現多國語系。</span>
-                      </li>
-                      <li>
-                        <strong class="text-[1rem] text-[var(--foreground)] whitespace-nowrap shrink-0">即時通訊與後端協作：</strong>
-                        <span class="text-[0.95rem] text-[var(--muted-foreground)]">封裝 MQTT (mqtt.js) 核心通訊模組，實現設備即時數據訂閱、發送與自動重連機制；基於 Axios 透過 Interceptors 統一處理 JWT 認證、分頁與 API 攔截。</span>
-                      </li>
-                      <li>
-                        <strong class="text-[1rem] text-[var(--foreground)] whitespace-nowrap shrink-0">數據視覺化與 UI 開發：</strong>
-                        <span class="text-[0.95rem] text-[var(--muted-foreground)]">以 Element Plus 為基礎，搭配 UnoCSS 與 SCSS 進行切版，並整合 ECharts 開發能源監控資料視覺化圖表。</span>
-                      </li>
-                      <li>
-                        <strong class="text-[1rem] text-[var(--foreground)] whitespace-nowrap shrink-0">共用模組與前端工程化：</strong>
-                        <span class="text-[0.95rem] text-[var(--muted-foreground)]">開發共用 Composables 與元件，封裝圖片壓縮與拖曳排序等功能模組，提升程式碼重用性並降低維護成本。</span>
-                      </li>
-                      <li>
-                        <strong class="text-[1rem] text-[var(--foreground)] whitespace-nowrap shrink-0">系統防呆與異常處理：</strong>
-                        <span class="text-[0.95rem] text-[var(--muted-foreground)]">實作前端驗證與錯誤處理機制 (JWT Auth)，透過 Axios Interceptors 與 Vue 全域錯誤處理統一攔截 API 與系統異常。</span>
+                      <li v-for="(item, i) in work.jobContent" :key="i">
+                        <strong
+                          class="text-[1rem] text-[var(--foreground)] whitespace-nowrap shrink-0"
+                        >
+                          {{ item.title }}
+                        </strong>
+                        <span
+                          class="text-[0.95rem] text-[var(--muted-foreground)]"
+                        >
+                          {{ item.desc }}
+                        </span>
                       </li>
                     </ul>
                   </div>
 
-                  <!-- 採用技術區塊 -->
-                  <div>
-                    <h4 class="text-[1.15rem] font-[800] text-[var(--primary)] tracking-wide mb-4 flex items-center gap-2">
-                      <span class="w-1.5 h-1.5 bg-[var(--primary)] rounded-full"></span>
-                      採用技術
-                    </h4>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-y-4 gap-x-6 pl-1">
-                      <div class="flex flex-col gap-0.5">
-                        <span class="text-[0.75rem] text-[var(--muted-foreground)] uppercase tracking-widest font-bold">核心框架</span>
-                        <span class="text-[0.95rem] font-bold text-[var(--foreground)]">Vue 3 (Composition API)、Vite、Vue Router</span>
-                      </div>
-                      <div class="flex flex-col gap-0.5">
-                        <span class="text-[0.75rem] text-[var(--muted-foreground)] uppercase tracking-widest font-bold">狀態管理</span>
-                        <span class="text-[0.95rem] font-bold text-[var(--foreground)]">Pinia、pinia-plugin-persistedstate</span>
-                      </div>
-                      <div class="flex flex-col gap-0.5">
-                        <span class="text-[0.75rem] text-[var(--muted-foreground)] uppercase tracking-widest font-bold">UI 與樣式</span>
-                        <span class="text-[0.95rem] font-bold text-[var(--foreground)]">Element Plus、UnoCSS、SCSS / Sass</span>
-                      </div>
-                      <div class="flex flex-col gap-0.5">
-                        <span class="text-[0.75rem] text-[var(--muted-foreground)] uppercase tracking-widest font-bold">資料通訊</span>
-                        <span class="text-[0.95rem] font-bold text-[var(--foreground)]">Axios (RESTful API)、MQTT (即時通訊)</span>
-                      </div>
-                      <div class="flex flex-col gap-0.5">
-                        <span class="text-[0.75rem] text-[var(--muted-foreground)] uppercase tracking-widest font-bold">資料視覺化</span>
-                        <span class="text-[0.95rem] font-bold text-[var(--foreground)]">ECharts</span>
-                      </div>
-                      <div class="flex flex-col gap-0.5">
-                        <span class="text-[0.75rem] text-[var(--muted-foreground)] uppercase tracking-widest font-bold">常用工具</span>
-                        <span class="text-[0.95rem] font-bold text-[var(--foreground)]">Vue I18n、VueUse、vuedraggable、jwt-decode</span>
-                      </div>
-                    </div>
-                  </div>
+                  <!-- 一般清單列表 (如視覺設計師工作內容) -->
+                  <ul v-if="work.list" class="timeline-list">
+                    <li v-for="(desc, i) in work.list" :key="i">
+                      {{ desc }}
+                    </li>
+                  </ul>
                 </div>
-              </div>
-            </div>
-
-            <div class="timeline-item timeline-item--active">
-              <div class="timeline-dot timeline-dot--active"></div>
-              <div class="timeline-content">
-                <span class="timeline-date timeline-date--active"
-                  >2022 – 2024</span
-                >
-                <div class="timeline-header">
-                  <h3 class="timeline-company">奧亞整合行銷</h3>
-                  <span class="timeline-role">視覺設計師</span>
-                </div>
-                <ul class="timeline-list">
-                  <li>主導品牌視覺規劃與線上活動主視覺設計</li>
-                  <li>協同前端工程師進行網頁視覺版面優化與切版規格交付</li>
-                  <li>設計多元化數位行銷素材，精確傳達品牌價值</li>
-                </ul>
-              </div>
-            </div>
-
-            <div class="timeline-item timeline-item--active">
-              <div class="timeline-dot timeline-dot--active"></div>
-              <div class="timeline-content">
-                <span class="timeline-date timeline-date--active"
-                  >2020 – 2022</span
-                >
-                <div class="timeline-header">
-                  <h3 class="timeline-company">平晨設計印刷</h3>
-                  <span class="timeline-role">視覺設計師</span>
-                </div>
-                <ul class="timeline-list">
-                  <li>負責各類印刷品、包裝設計與書籍視覺排版</li>
-                  <li>
-                    與客戶直接溝通，將抽象概念轉化為具市場競爭力的設計作品
-                  </li>
-                  <li>控管印前流程與色彩管理，確保成品高品質輸出</li>
-                </ul>
-              </div>
-            </div>
-
-            <div class="timeline-item timeline-item--active">
-              <div class="timeline-dot timeline-dot--active"></div>
-              <div class="timeline-content">
-                <span class="timeline-date timeline-date--active"
-                  >2018 – 2020</span
-                >
-                <div class="timeline-header">
-                  <h3 class="timeline-company">發明造物</h3>
-                  <span class="timeline-role">視覺設計師</span>
-                </div>
-                <ul class="timeline-list">
-                  <li>開發品牌周邊文創產品之視覺與造型設計</li>
-                  <li>協同團隊進行展覽空間規劃與實體導覽視覺設計</li>
-                </ul>
               </div>
             </div>
           </div>
@@ -195,6 +110,7 @@
 
 <script setup>
 import { WorksCard } from "@/components";
+import { educationData, workData } from "@/data/experienceData";
 </script>
 
 <style scoped lang="scss">
@@ -259,7 +175,6 @@ import { WorksCard } from "@/components";
 
 .timeline-date {
   font-size: 1rem;
-  // font-weight: 600;
   color: #e05a36;
   font-family: ui-monospace, monospace;
   transition: all 0.3s ease;
