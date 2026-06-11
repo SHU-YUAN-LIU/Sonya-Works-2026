@@ -14,40 +14,57 @@
 
     <!-- 採用 WorksCard 元件，傳入標題，並將原本的程式碼與自介內容透過 slot 塞入 -->
     <WorksCard title="sonya_profile">
-      <div class="intro-content w-full">
+      <div class="intro-content w-full flex flex-col gap-3">
         <!-- 程式碼物件區 -->
-        <div class="code-block font-mono">
-          <div
-            class="mb-4 text-[1rem] leading-[1.8] text-[var(--muted-foreground)]"
-          >
-            <span class="keyword">const</span> developer = {
-            <div class="pl-6">
-              name: <span class="string">"劉書菀"</span>,<br />
-              englishName: <span class="string">"SHU-YUAN-LIU"</span>,<br />
-              role: <span class="string">"Frontend Engineer"</span>,<br />
-            </div>
-            };
+        <div
+          class="code-block font-mono text-[1rem] leading-[1.6] text-[var(--muted-foreground)]"
+        >
+          <span class="keyword">const</span> developer = {
+          <div class="pl-6">
+            name: <span class="string">"劉書菀"</span>,<br />
+            role: <span class="string">"Frontend Engineer"</span>
           </div>
+          };
         </div>
 
         <!-- 分隔線 -->
         <div class="card-details-divider"></div>
 
-        <!-- 自我介紹文字 -->
-        <div
-          class="intro-text text-[var(--foreground)] leading-[1.8] text-justify space-y-3 font-sans text-[1rem] pt-4"
-        >
-          <p>Hi ! 我是書菀，一名<strong>前端工程師</strong></p>
-          <p>
-            主要使用<strong> Vue3 </strong
-            >進行前端開發，曾參與企業節能管理系統建置，從前期的專案初始化與架構設計，到中後期的
-            <strong>API 整合</strong>、<strong>MQTT 即時數據監控</strong
-            >，以及設備管理、權限控制等功能模組的開發與維護。
-          </p>
-          <p>
-            結合過往的視覺設計背景，我能在開發中融入 UI/UX
-            思考，兼顧系統架構的擴充性與使用者體驗。期待持續深化技術，參與更多產品與系統的開發。
-          </p>
+        <!-- 自我介紹內容區 -->
+        <div class="intro-sections-container">
+          <div class="intro-section">
+            <h3>【個人簡介】</h3>
+            <p>
+              您好，我是劉書菀，畢業於台灣藝術大學工藝設計系。<br />
+              我擁有五年以上設計經驗及近兩年前端開發經驗。自轉職前端後，持續參與企業專案開發與維護，累積功能開發、需求分析及跨部門協作經驗，並將設計背景作為輔助，在開發過程中兼顧使用者體驗與介面品質。
+            </p>
+          </div>
+          <div class="intro-section">
+            <h3>【工作經歷與成長】</h3>
+            <p>
+              在任職期間，我參與多項 Web
+              應用系統的開發與維護工作，從需求分析、介面設計到前端實作皆有實際參與經驗，並與後端工程師協作完成產品功能開發。<br />
+              透過專案實務歷練，我逐步建立對產品需求、開發流程及系統架構的理解，並培養獨立分析問題與提出解決方案的能力。同時也持續優化開發流程與元件管理方式，以提升團隊協作效率及產品品質。
+            </p>
+          </div>
+
+          <div class="intro-section">
+            <h3>【個人優勢】</h3>
+            <p>
+              我最大的優勢在於同時具備設計與前端開發背景，能從使用者體驗、介面設計與技術實作等不同角度思考需求，協助將想法有效落實為產品功能。<br />
+              此外，我也積極將 AI
+              工具應用於開發流程中，運用於技術研究、問題排查、程式碼優化及文件整理，提升開發效率與學習速度，並持續關注新技術與開發趨勢。
+            </p>
+          </div>
+
+          <div class="intro-section">
+            <h3>【未來規劃】</h3>
+            <p>
+              未來希望持續精進前端技術能力，累積大型專案經驗，並提升架構設計與系統規劃能力。<br />
+              同時，我也會持續關注 AI
+              與新技術的應用，透過優化開發流程與工具運用，提升開發效率與產品品質。
+            </p>
+          </div>
         </div>
       </div>
     </WorksCard>
@@ -60,8 +77,6 @@ import { WorksCard } from "@/components";
 
 <style scoped lang="scss">
 .intro-content {
-  display: flex;
-  flex-direction: column;
   text-align: left;
 
   .keyword {
@@ -71,46 +86,55 @@ import { WorksCard } from "@/components";
   .string {
     color: var(--primary);
   }
-  .boolean {
-    color: #9fcaf8;
-  }
 
   .card-details-divider {
     border-top: 1px dashed var(--border);
     width: 100%;
-    margin-top: 8px;
+    margin: 2px 0;
   }
 
-  .intro-text {
-    strong {
+  .intro-sections-container {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    font-family: system-ui, sans-serif;
+    font-size: 1rem;
+  }
+
+  .intro-section {
+    h3 {
       color: var(--primary);
-      font-weight: 600;
+      font-size: 1rem;
+      margin-bottom: 8px;
+    }
+
+    p {
+      margin-bottom: 0;
+      text-align: justify;
+      line-height: 1.8;
+      color: var(--foreground);
     }
   }
 }
 
-/* 覆寫 WorksCard 內部在 Intro 頁面下的寬度與 Hover 限制，讓它像原本一樣是 100% 寬度且無 translateY 偏移 */
+/* 覆寫 WorksCard 內部在 Intro 頁面下的寬度與 Hover 限制 */
 :deep(.works-card) {
   max-width: 100% !important;
   cursor: default !important;
 
-  /* 移除上浮動畫 */
   &:hover {
     transform: none !important;
   }
 
-  /* 調整內距與整體舒適間距 */
   .card-body {
-    padding: 24px 28px !important;
-    gap: 20px !important;
+    padding: 14px 20px !important;
+    gap: 8px !important;
   }
 
-  /* 隱藏原本 card-body 預設的 image container（因為簡介不需要秀專案縮圖） */
   .image-container {
     display: none !important;
   }
 
-  /* 隱藏 WorksCard 預設的 code-line 渲染（因為簡介的程式碼自定義結構更複雜，我們在 slot 裡面寫） */
   .card-details {
     display: none !important;
   }

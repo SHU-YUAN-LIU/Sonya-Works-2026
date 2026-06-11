@@ -18,7 +18,10 @@
       <!-- 教育背景 & 進修 -->
       <WorksCard title="education" class="w-full">
         <div class="exp-content w-full">
-          <h2 class="section-title">🎓 教育背景 &amp; 進修</h2>
+          <h2 class="section-title">
+            <el-icon class="mr-2 align-middle"><School /></el-icon>
+            <span class="align-middle">教育背景 &amp; 進修</span>
+          </h2>
           <div class="timeline">
             <div
               v-for="(edu, index) in educationData"
@@ -43,7 +46,10 @@
       <!-- 工作經歷 -->
       <WorksCard title="work-history" class="w-full">
         <div class="exp-content w-full">
-          <h2 class="section-title">💼 工作經歷</h2>
+          <h2 class="section-title">
+            <el-icon class="mr-2 align-middle"><Briefcase /></el-icon>
+            <span class="align-middle">工作經歷</span>
+          </h2>
           <div class="timeline">
             <div
               v-for="(work, index) in workData"
@@ -59,7 +65,7 @@
                   class="timeline-header flex flex-col items-start gap-1 mb-2"
                 >
                   <div class="flex items-baseline gap-2">
-                    <h3 class="timeline-company">{{ work.company }}</h3>
+                     <h3 class="timeline-company">{{ work.company }}</h3>
                     <span class="timeline-role">{{ work.role }}</span>
                   </div>
                   <span
@@ -111,6 +117,8 @@
 <script setup>
 import { WorksCard } from "@/components";
 import { educationData, workData } from "@/data/experienceData";
+import { ElIcon } from "element-plus";
+import { School, Briefcase } from "@element-plus/icons-vue";
 </script>
 
 <style scoped lang="scss">

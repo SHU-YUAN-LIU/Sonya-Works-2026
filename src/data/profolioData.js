@@ -4,6 +4,22 @@ import MBMS from "@/assets/images/MBMS.jpg";
 import wolfer from "@/assets/images/wolfer.jpg";
 import design from "@/assets/images/design.jpg";
 
+// MBMS 輪播圖片
+import mbmsBms from "@/assets/images/MBMS/mbms-BMS.png";
+import mbmsDashboard from "@/assets/images/MBMS/mbms-dashboard.png";
+import mbmsModule from "@/assets/images/MBMS/mbms-module.png";
+import mbmsSchedule from "@/assets/images/MBMS/mbms-schedule.png";
+import mbmsStatistic from "@/assets/images/MBMS/mbms-statistic.png";
+
+// EM 輪播圖片
+import emDashboard from "@/assets/images/EM/EM-dashboard.png";
+import emDataoverview from "@/assets/images/EM/EM-dataoverview.png";
+import emInitial from "@/assets/images/EM/EM-initial.png";
+import emMultiMeter from "@/assets/images/EM/EM-multiMeter.png";
+import emPermission from "@/assets/images/EM/EM-permission.png";
+import emSettingDataoverview from "@/assets/images/EM/EM-setting-dataoverview.png";
+import emSettingDevice from "@/assets/images/EM/EM-setting-device.png";
+import emStatistic from "@/assets/images/EM/EM-statistic.png";
 
 //作品集連結
 export const worksData = [
@@ -11,11 +27,22 @@ export const worksData = [
     title: "節能系統",
     linkUrl: "https://energy-saving.synerg-data.net/login",
     imgUrl: energySaving,
+    images: [
+      emMultiMeter,
+      emDashboard,
+      emDataoverview,
+      emStatistic,
+      emSettingDataoverview,
+      emSettingDevice,
+      emPermission,
+      emInitial,
+    ],
   },
   {
     title: "能源系統",
     linkUrl: "https://mbms-qa.synerg-data.com/login",
     imgUrl: MBMS,
+    images: [mbmsDashboard, mbmsBms, mbmsModule, mbmsSchedule, mbmsStatistic],
   },
   {
     title: "個人專題(緯育)",

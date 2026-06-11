@@ -34,16 +34,24 @@
           <span class="keyword">const</span> name =
           <span class="string">"{{ title }}"</span>;
         </div>
-        <div class="code-line">
-          <span class="keyword">const</span> status =
-          <span class="string">"online"</span>;
-        </div>
 
         <!-- Hover action hint -->
-        <div class="action-hint" v-if="linkUrl">
-          <span class="prompt-sym">&gt;</span>
-          <span class="action-text">visit_app()</span>
-          <span class="arrow font-sans">→</span>
+        <div class="actions-container">
+          <div class="action-hint" v-if="linkUrl">
+            <span class="prompt-sym">&gt;</span>
+            <span class="action-text">visit_app()</span>
+            <span class="arrow font-sans">→</span>
+          </div>
+          <div
+            class="action-hint screenshot-btn"
+            v-if="images && images.length > 0"
+            @click.stop="openScreenshots"
+          >
+            <span class="prompt-sym">&gt;</span>
+            <span class="action-text">view_screenshots()</span>
+            <span class="arrow font-sans">→</span>
+            <el-icon class="eye-icon"><View /></el-icon>
+          </div>
         </div>
       </div>
     </div>
@@ -52,6 +60,9 @@
 
 <script setup>
 import { computed } from "vue";
+import { ElIcon } from "element-plus";
+import { View } from "@element-plus/icons-vue";
+
 
 const props = defineProps({
   title: {
@@ -62,11 +73,25 @@ const props = defineProps({
     type: String,
     default: "",
   },
+  images: {
+    type: Array,
+    default: () => [],
+  },
   linkUrl: {
     type: String,
     default: "",
   },
 });
+
+const emit = defineEmits(["viewScreenshots"]);
+
+const openScreenshots = () => {
+  emit("viewScreenshots", {
+    title: props.title,
+    images: props.images,
+  });
+};
+
 
 // Dynamic terminal file name formatting
 const formattedFileName = computed(() => {
@@ -125,7 +150,7 @@ const handleOpenUrl = () => {
         transform: scale(1.05);
       }
 
-      .action-hint {
+      .action-hint:not(.screenshot-btn) {
         color: var(--primary);
         .action-text {
           text-decoration: underline;
@@ -263,11 +288,17 @@ const handleOpenUrl = () => {
         }
       }
 
+      .actions-container {
+        display: flex;
+        gap: 16px;
+        flex-wrap: wrap;
+        margin-top: 6px;
+      }
+
       .action-hint {
         display: flex;
         align-items: center;
         gap: 6px;
-        margin-top: 6px;
         color: var(--muted-foreground);
         font-weight: 600;
         font-size: 0.825rem;
@@ -279,6 +310,46 @@ const handleOpenUrl = () => {
 
         .arrow {
           transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .eye-icon {
+          font-size: 13px;
+          transition: transform 0.3s ease;
+        }
+
+        &.screenshot-btn {
+          cursor: pointer;
+
+          &:hover {
+            color: var(--primary);
+            
+            .action-text {
+              text-decoration: underline;
+            }
+
+            .arrow {
+              transform: translateX(4px);
+            }
+
+            .eye-icon {
+              transform: scale(1.2) rotate(15deg);
+            }
+          }
+        }
+      }
+    }
+
+    /* 當 hover 觀看截圖按鈕時，取消卡片原本高亮第一個連結的樣式 */
+    &:has(.screenshot-btn:hover) {
+      &:hover {
+        .action-hint:not(.screenshot-btn) {
+          color: var(--muted-foreground);
+          .action-text {
+            text-decoration: none;
+          }
+          .arrow {
+            transform: translateX(0);
+          }
         }
       }
     }

@@ -37,13 +37,34 @@
         :key="index"
         :title="item.title"
         :imgUrl="item.imgUrl"
+        :images="item.images"
         :linkUrl="item.linkUrl"
+        @viewScreenshots="showScreenshots"
       />
     </div>
+
+    <!-- Screenshots Carousel Modal -->
+    <ScreenshotModal
+      :isOpen="isModalOpen"
+      :title="modalTitle"
+      :images="modalImages"
+      @close="isModalOpen = false"
+    />
   </div>
 </template>
 
 <script setup>
-import { WorksCard } from "@/components";
+import { ref } from "vue";
+import { WorksCard, ScreenshotModal } from "@/components";
 import { worksData } from "@/data/profolioData";
+
+const isModalOpen = ref(false);
+const modalTitle = ref("");
+const modalImages = ref([]);
+
+const showScreenshots = (data) => {
+  modalTitle.value = data.title;
+  modalImages.value = data.images;
+  isModalOpen.value = true;
+};
 </script>
