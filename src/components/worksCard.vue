@@ -4,17 +4,17 @@
     :class="{ 'is-link': linkUrl }"
     @click="handleOpenUrl"
   >
-    <!-- MacOS terminal top bar -->
+    <!-- MacOS 終端機頂部列 -->
     <div class="card-header font-mono">
       <div class="controls">
         <span class="dot red"></span>
         <span class="dot yellow"></span>
         <span class="dot green"></span>
       </div>
-      <div class="title-bar">&gt; {{ formattedFileName }}</div>
+      <div class="title-bar">&gt; {{ fileName || 'project.tsx' }}</div>
     </div>
 
-    <!-- Content container -->
+    <!-- 內容容器 -->
     <div class="card-body">
       <slot>
         <div class="image-container">
@@ -28,14 +28,14 @@
         </div>
       </slot>
 
-      <!-- Interactive developer code details block -->
+      <!-- 互動式開發者代碼細節區塊 -->
       <div class="card-details font-mono">
         <div class="code-line">
           <span class="keyword">const</span> name =
           <span class="string">"{{ title }}"</span>;
         </div>
 
-        <!-- Hover action hint -->
+        <!-- 懸停操作提示 -->
         <div class="actions-container">
           <div class="action-hint" v-if="linkUrl">
             <span class="prompt-sym">&gt;</span>
@@ -59,13 +59,16 @@
 </template>
 
 <script setup>
-import { computed } from "vue";
 import { ElIcon } from "element-plus";
 import { View } from "@element-plus/icons-vue";
 
 
 const props = defineProps({
   title: {
+    type: String,
+    default: "",
+  },
+  fileName: {
     type: String,
     default: "",
   },
@@ -92,20 +95,6 @@ const openScreenshots = () => {
   });
 };
 
-
-// Dynamic terminal file name formatting
-const formattedFileName = computed(() => {
-  const titleMap = {
-    節能系統: "energy-saving.vue",
-    能源系統: "mbms-energy.tsx",
-    "個人專題(緯育)": "personal-wolfer.html",
-    "團體專題(緯育)": "group-eat-party.conf",
-  };
-  return (
-    titleMap[props.title] ||
-    `${props.title.toLowerCase().replace(/[^a-z0-9]/g, "-") || "project"}.tsx`
-  );
-});
 
 const handleOpenUrl = () => {
   if (props.linkUrl) {
