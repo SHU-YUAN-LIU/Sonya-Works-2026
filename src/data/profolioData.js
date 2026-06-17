@@ -47,12 +47,12 @@ export const worksData = [
     imgUrl: MBMS,
     images: [mbmsDashboard, mbmsBms, mbmsModule, mbmsSchedule, mbmsStatistic],
   },
-  {
-    title: "AI寵物圖鑑",
-    fileName: "side-project.vue",
-    linkUrl: "https://sonya-nuxt-production.up.railway.app/login",
-    imgUrl: sideProject,
-  },
+  // {
+  //   title: "AI寵物圖鑑",
+  //   fileName: "side-project.vue",
+  //   linkUrl: "https://sonya-nuxt-production.up.railway.app/login",
+  //   imgUrl: sideProject,
+  // },
   {
     title: "個人專題(緯育)",
     fileName: "personal-wolfer.html",
