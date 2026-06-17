@@ -1,6 +1,7 @@
 import youthWantToEatParty from "@/assets/images/happyParty.jpg";
 import energySaving from "@/assets/images/energySaving.jpg";
 import MBMS from "@/assets/images/MBMS.jpg";
+import sideProject from "@/assets/images/side-project.png";
 import wolfer from "@/assets/images/wolfer.jpg";
 import design from "@/assets/images/design.jpg";
 
@@ -25,6 +26,7 @@ import emStatistic from "@/assets/images/EM/EM-statistic.png";
 export const worksData = [
   {
     title: "節能系統",
+    fileName: "energy-saving.vue",
     linkUrl: "https://energy-saving.synerg-data.net/login",
     imgUrl: energySaving,
     images: [
@@ -40,22 +42,32 @@ export const worksData = [
   },
   {
     title: "能源系統",
+    fileName: "mbms-energy.vue",
     linkUrl: "https://mbms-qa.synerg-data.com/login",
     imgUrl: MBMS,
     images: [mbmsDashboard, mbmsBms, mbmsModule, mbmsSchedule, mbmsStatistic],
   },
+  // {
+  //   title: "AI寵物圖鑑",
+  //   fileName: "side-project.vue",
+  //   linkUrl: "https://sonya-nuxt-production.up.railway.app/login",
+  //   imgUrl: sideProject,
+  // },
   {
     title: "個人專題(緯育)",
+    fileName: "personal-wolfer.html",
     linkUrl: "https://shu-yuan-liu.github.io/CHD104-v1/index.html#goToTop-a",
     imgUrl: wolfer,
   },
   {
     title: "團體專題(緯育)",
+    fileName: "group-eat-party.conf",
     linkUrl: "https://tibamef2e.com/chd104/g2/",
     imgUrl: youthWantToEatParty,
   },
   {
     title: "設計作品",
+    fileName: "design-works.scss",
     linkUrl: "https://www.behance.net/2bf44a20",
     imgUrl: design,
   },

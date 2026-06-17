@@ -23,7 +23,7 @@
         </p>
         <p class="m-0 whitespace-pre-wrap">&nbsp;* @status active</p>
         <p class="m-0 whitespace-pre-wrap">
-          * @stack Vue3 + TailwindCSS + ElementPlus
+          * @stack Vue3 + TailwindCSS + ElementPlus + MQTT + Nuxt + Ecpay
         </p>
         <p class="m-0 whitespace-pre-wrap">*/</p>
       </div>
@@ -36,6 +36,7 @@
         v-for="(item, index) in worksData"
         :key="index"
         :title="item.title"
+        :fileName="item.fileName"
         :imgUrl="item.imgUrl"
         :images="item.images"
         :linkUrl="item.linkUrl"

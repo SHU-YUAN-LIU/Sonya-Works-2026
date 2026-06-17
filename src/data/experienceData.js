@@ -1,13 +1,13 @@
 export const educationData = [
   {
-    date: "2025",
+    date: "2023/10 – 2024/03",
     company: "緯育 Tibame",
-    role: "前端工程師就業養成班"
+    role: "前端工程師專業技術養成班"
   },
   {
-    date: "2014 – 2018",
+    date: "2013/09 – 2017/06",
     company: "國立臺灣藝術大學",
-    role: "視覺傳達設計學系（學士）"
+    role: "工藝設計系（學士）"
   }
 ];
 
@@ -42,8 +42,8 @@ export const workData = [
     ]
   },
   {
-    date: "2022 – 2024",
-    company: "奧亞整合行銷",
+    date: "2021/04 – 2023/10",
+    company: "奧亞整合行銷網股份有限公司",
     role: "視覺設計師",
     list: [
       "通路及品牌相關POSM設計提案",
@@ -56,8 +56,8 @@ export const workData = [
     ]
   },
   {
-    date: "2020 – 2022",
-    company: "平晨設計印刷",
+    date: "2018/01 – 2021/03",
+    company: "平晨設計印刷有限公司",
     role: "視覺設計師",
     list: [
       "DM/Banner/包裝設計",
@@ -69,8 +69,8 @@ export const workData = [
     ]
   },
   {
-    date: "2018 – 2020",
-    company: "發明造物",
+    date: "2016/08 – 2020/09",
+    company: "發明造物兒童木工教室",
     role: "木工老師",
     list: [
       "兒童木工教學",
