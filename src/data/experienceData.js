@@ -13,7 +13,7 @@ export const educationData = [
 
 export const workData = [
   {
-    date: "2024/7 – 仍在職",
+    date: "2024/7 – 2026/7",
     company: "百慧科技股份有限公司",
     role: "軟體工程師",
     // info: "電腦系統整合服務業 | 新北市三重區",

@@ -18,9 +18,7 @@
         class="bg-[var(--code-bg)] border border-dashed border-[var(--border)] rounded-[var(--radius)] p-4 px-5 text-[0.875rem] leading-[1.6] text-[var(--muted-foreground)] shadow-sm"
       >
         <p class="m-0 whitespace-pre-wrap">/**</p>
-        <p class="m-0 whitespace-pre-wrap">
-          * @description 彙整年度精選開發作品與系統展示
-        </p>
+        <p class="m-0 whitespace-pre-wrap">* @description 開發作品與系統展示</p>
         <p class="m-0 whitespace-pre-wrap">&nbsp;* @status active</p>
         <p class="m-0 whitespace-pre-wrap">
           * @stack Vue3 + TailwindCSS + ElementPlus + MQTT + Nuxt + Ecpay

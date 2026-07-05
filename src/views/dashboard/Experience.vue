@@ -33,7 +33,7 @@
                 <span class="timeline-date timeline-date--active">{{
                   edu.date
                 }}</span>
-                <div class="timeline-header">
+                <div class="timeline-header flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-2">
                   <h3 class="timeline-company">{{ edu.company }}</h3>
                   <span class="timeline-role">{{ edu.role }}</span>
                 </div>
@@ -64,7 +64,7 @@
                 <div
                   class="timeline-header flex flex-col items-start gap-1 mb-2"
                 >
-                  <div class="flex items-baseline gap-2">
+                  <div class="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-2">
                      <h3 class="timeline-company">{{ work.company }}</h3>
                     <span class="timeline-role">{{ work.role }}</span>
                   </div>
@@ -83,14 +83,14 @@
                   <!-- 工作內容區塊 -->
                   <div v-if="work.jobContent" class="mb-8">
                     <ul class="timeline-list">
-                      <li v-for="(item, i) in work.jobContent" :key="i">
+                      <li v-for="(item, i) in work.jobContent" :key="i" class="flex flex-wrap md:flex-nowrap items-baseline">
                         <strong
                           class="text-[1rem] text-[var(--foreground)] whitespace-nowrap shrink-0"
                         >
                           {{ item.title }}
                         </strong>
                         <span
-                          class="text-[0.95rem] text-[var(--muted-foreground)]"
+                          class="text-[0.95rem] text-[var(--muted-foreground)] w-full md:w-auto md:ml-2 pl-4 md:pl-0 break-words"
                         >
                           {{ item.desc }}
                         </span>
