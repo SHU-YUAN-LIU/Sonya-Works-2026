@@ -11,7 +11,7 @@
         <span class="dot yellow"></span>
         <span class="dot green"></span>
       </div>
-      <div class="title-bar">&gt; {{ fileName || 'project.tsx' }}</div>
+      <div class="title-bar">&gt; {{ fileName || "project.js" }}</div>
     </div>
 
     <!-- 內容容器 -->
@@ -62,7 +62,6 @@
 import { ElIcon } from "element-plus";
 import { View } from "@element-plus/icons-vue";
 
-
 const props = defineProps({
   title: {
     type: String,
@@ -94,7 +93,6 @@ const openScreenshots = () => {
     images: props.images,
   });
 };
-
 
 const handleOpenUrl = () => {
   if (props.linkUrl) {
@@ -311,7 +309,7 @@ const handleOpenUrl = () => {
 
           &:hover {
             color: var(--primary);
-            
+
             .action-text {
               text-decoration: underline;
             }

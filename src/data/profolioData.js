@@ -61,7 +61,7 @@ export const worksData = [
   },
   {
     title: "團體專題(緯育)",
-    fileName: "group-eat-party.conf",
+    fileName: "group-eat-party.vue",
     linkUrl: "https://tibamef2e.com/chd104/g2/",
     imgUrl: youthWantToEatParty,
   },
