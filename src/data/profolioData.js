@@ -13,14 +13,16 @@ import mbmsSchedule from "@/assets/images/MBMS/mbms-schedule.png";
 import mbmsStatistic from "@/assets/images/MBMS/mbms-statistic.png";
 
 // EM 輪播圖片
-import emDashboard from "@/assets/images/EM/EM-dashboard.png";
-import emDataoverview from "@/assets/images/EM/EM-dataoverview.png";
-import emInitial from "@/assets/images/EM/EM-initial.png";
-import emMultiMeter from "@/assets/images/EM/EM-multiMeter.png";
-import emPermission from "@/assets/images/EM/EM-permission.png";
-import emSettingDataoverview from "@/assets/images/EM/EM-setting-dataoverview.png";
-import emSettingDevice from "@/assets/images/EM/EM-setting-device.png";
-import emStatistic from "@/assets/images/EM/EM-statistic.png";
+import emMultiMeter from "@/assets/images/EM/0.EM-multiMeter.png";
+import emDashboard from "@/assets/images/EM/1.EM-dashboard.png";
+import emDataoverview from "@/assets/images/EM/2.EM-dataoverview.png";
+import emStatistic from "@/assets/images/EM/3.EM-statistic.png";
+import emInitial from "@/assets/images/EM/4.EM-initial.png";
+import emSettingDataoverview from "@/assets/images/EM/5.EM-setting-dataoverview.png";
+import emSettingDevice from "@/assets/images/EM/6.EM-setting-device.png";
+import emAlertDialog from "@/assets/images/EM/7-1.EM-alert-dialog.png";
+import emAlert from "@/assets/images/EM/7-2.EM-alert.png";
+import emPermission from "@/assets/images/EM/8.EM-permission.png";
 
 //作品集連結
 export const worksData = [
@@ -34,10 +36,12 @@ export const worksData = [
       emDashboard,
       emDataoverview,
       emStatistic,
+      emInitial,
       emSettingDataoverview,
       emSettingDevice,
+      emAlertDialog,
+      emAlert,
       emPermission,
-      emInitial,
     ],
   },
   {
